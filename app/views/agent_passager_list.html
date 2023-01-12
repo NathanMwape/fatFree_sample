@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="{{@BASE. '/' . @UI}}"/>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.css">
+    <title>Liste de passagers</title>
+</head>
+    <body id="mains">
+        <div class="container" >
+		<div class="card-box mb-30">
+                <header>
+                    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+                        <div class="container-fluid">
+                            <a class="navbar-brand" id="pad" href="{{ @BASE . '/agent/accueil' }}">
+                                <img src="img/images (5).jpeg" style="border-radius: 30px 30px 30px 30px;" alt="" width="400" height="60">
+                            </a>
+                            <form class="d-flex">
+                                <div>
+                                    <a  style="color: #FFFF;margin-left:0px;font-size: 20px;" href="{{ @BASE . '/agent/rediger_rapport' }}">
+                                        <i class="fa fa-pencil fa-2x" style="color: #FFFF;font-size:20px;" aria-hidden="true"></i>
+                                        Rediger un rapport
+                                    </a>
+                                    <a style="color: #FFFF;margin-left:10px;font-size: 20px;" href="{{ @BASE . '/agent/ajouter_passager' }}">
+                                        <i class="fa fa-user fa-2x" style="color: #FFFF;font-size:20px;" aria-hidden="true"></i>
+                                        Ajouter
+                                    </a>
+                                </div>
+        
+                            </form>
+                        </div>
+                    </nav>
+                </header>
+                <div class="col-md-12" id="r">
+                    <div class="pd-20" style="margin:30px;">
+                        <h4 class="text-blue h4" style="display:inline">LISTE DE PASSAGERS</h4>
+                        <label for="search" style="margin-left:440px;color:black;">Recherche : </label>
+                        <input type="text" placeholder="..." id="search">
+                    </div>
+                    <table id="tab" class="table table-striped" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Nom</th>
+                                <th>Post-nom</th>
+                                <th>Prenom</th>
+                                <th>Age</th>
+                                <th>Genre</th>
+                                <th>Date</th>
+                                <th>Guichet</th>
+                                <th>Sortie</th>
+                                <th>Autorisation</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <repeat group="{{@passagers}}" value="{{@passager}}">    
+                                <tr id="{{ @passager.passagerID }}">
+                                    <td>{{@passager.nom}}</td>
+                                    <td>{{@passager.postnom}}</td>
+                                    <td>{{@passager.prenom}}</td>
+                                    <td>{{@passager.age}}</td>
+                                    <td>{{@passager.genre}}</td>
+                                    <td>{{explode(' ', @passager.date_enr)[0]}}</td>
+                                    <td>{{@passager.nom_guichet}}</td>
+                                    <td>{{@passager.dej_sortie}}</td>
+                                    <td>{{@passager.sortie}}</td>
+                                    <td>
+                                        <a href="{{ @BASE . '/agent/maj/' . @passager.passagerID }}" class="btn btn-primary">
+                                            Modifier
+                                        </a>
+                                        <a href="{{ @BASE . '/agent/supprimer/' . @passager.passagerID }}" class="btn btn-danger">
+                                            Supprimer
+                                        </a>
+                                        <a href="{{ @BASE . '/agent/afficher_jeton/' . @passager.passagerID }}" class="btn btn-primary">Jeton</a>
+                                    </td>
+                                </tr>
+                            </repeat>
+                        </tbody>
+                    </table>
+                </div>
+        </div>
+        <script src="src/scripts/jquery.min.js"></script>
+        <script>
+            $(document).ready(function() {
+    
+                search.addEventListener("input", function() {
+                    let search = document.getElementById("search");
+                    let rows = document.getElementById("tab").rows;
+                    text_searched = new String(search.value).toLowerCase();
+                    
+                    for(var i=1; i < rows.length; i++) {
+                        var cols = rows[i].cells;
+                        var id = "#".concat(rows[i].id);
+                        val1 = new String(cols[0].innerHTML).toLowerCase();
+                        val2 = new String(cols[1].innerHTML).toLowerCase();
+                        val3 = new String(cols[2].innerHTML).toLowerCase();
+        
+                        if( val1.indexOf(text_searched) == -1 && 
+                            val2.indexOf(text_searched) == -1 &&
+                            val3.indexOf(text_searched) == -1)
+                        {
+                            $(id).hide("slow");
+                        }
+                        else $(id).show("slow");
+                    }
+                }, false);
+            });
+        </script>
+        <script src="js/app.js"></script>
+    </body>
+</html>

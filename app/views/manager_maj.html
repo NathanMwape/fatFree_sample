@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <base href="{{@BASE. '/' . @UI}}"/>     
+        <title>Modification d'un utilisateur</title>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css" >
+        <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.css">
+        <style>
+            fieldset {
+                width        : 80%;
+                margin-left  : 10%;
+                border       : 1px solid black;
+                border-radius: 10px;
+                padding      : 20px;
+                margin-top   : 10px;
+                margin-bottom: 10px;
+                background   : rgb(19, 17, 17);
+            }
+            label {
+                color      :aliceblue;
+                font-weight: bold;
+            }
+            button {
+                padding-left  :30px;
+                padding-right :30px;
+                padding-top   : 5px;
+                padding-bottom: 5px;
+                background    :blue;
+                color         :aliceblue;
+                border        :none;
+                border-radius : 6px; 
+                margin-left   : 46%;
+                text-align    : center;
+            }
+        </style>
+    </head>
+    <body style="background-color:rgb(188, 188, 188);">
+        <header style="margin-bottom: 90px;">
+            <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+                <div class="container-fluid">
+                    <a class="navbar-brand" id="pad" href="{{ @BASE . '/admin/accueil' }}">
+                        <img src="img/images (5).jpeg" style="border-radius: 30px 30px 30px 30px;" alt="" width="400" height="60">
+                    </a>
+                </div>
+            </nav>
+        </header>
+        <h3 style="font-weight: bold;margin-left: 38%;color:rgb(19, 17, 17);">
+            Modification d'un {{strtolower(@user.role)}}
+        </h3>
+
+        <form action="/admin/maj_proc/{{@user.userID}}" method="GET">
+            <fieldset>
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label>Nom : </label>
+                        <input value="{{@user.nom}}" name="nom" type="text" class="form-control">
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label>Post-nom : </label>
+                        <input value="{{@user.postnom}}" name="postnom" type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="col-md-6 form-group">
+                        <label>Prenom : </label>
+                        <input value="{{@user.prenom}}" name="prenom" type="text" class="form-control">
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label>Mot de passe : </label>
+                        <input value="{{@user.mot_de_passe}}" name="mot_de_passe" type="text" class="form-control">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label>Adresse : </label>
+                        <input value="{{@user.adresse}}" name="adresse" type="text" class="form-control">
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label>Telephone : </label>
+                        <input value="{{@user.telephone}}" name="telephone" type="text" class="form-control">
+                    </div>
+                
+                </div>
+                <div class="row">
+                    <check if="{{@user.role=='Agent'}}">
+                        <true>
+                            <div class="col-md-6 form-group">
+                                <label>Guichet : </label>
+                                <select name="guichet" class="form-control">
+ 
+                                    <check if="{{@sub_user.nom_guichet=='Guichet 1'}}">
+                                        <true><option selected="selected" value="Guichet 1">Guichet 1</option></true>
+                                        <false><option value="Guichet 1">Guichet 1</option></false>
+                                    </check>
+
+                                    <check if="{{@sub_user.nom_guichet=='Guichet 2'}}">
+                                        <true><option selected="selected" value="Guichet 2">Guichet 2</option></true>
+                                        <false><option value="Guichet 2">Guichet 2</option></false>
+                                    </check>
+
+                                    <check if="{{@sub_user.nom_guichet=='Guichet 3'}}">
+                                        <true><option selected="selected" value="Guichet 3">Guichet 3</option></true>
+                                        <false><option value="Guichet 3">Guichet 3</option></false>
+                                    </check>
+                                </select>
+                            </div>
+                        </true>
+                    </check>
+                </div>
+            
+            </fieldset>
+            <button type="submit">Modifier</button>
+            <br><br>
+        </form>
+        <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+    </body>
+</html>

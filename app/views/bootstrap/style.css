@@ -1,0 +1,45 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+span{
+    color: orange;
+}
+
+.log{
+    background-color: rgb(2, 18, 59);
+}
+h1{
+    font-size: 47px;
+    color: white;
+    width: 800;
+}
+.form-control{
+    background: rgb(63, 52, 52);
+    color: white;
+    border: none;
+    outline: none;
+    padding: 23px 10px;
+}
+.form-control:focus{
+    background-color: rgb(63, 52, 52);
+    outline: none;
+    color: white;
+}
+.btn1{
+    background: orange;
+    color: white;
+    outline: none;
+    border: none;
+    border-radius: 50px;
+    height: 50px;
+    width: 110px;
+}
+small{
+    color: white;
+}
+a{
+    color: rgb(11, 131, 211);
+    cursor: pointer;
+}

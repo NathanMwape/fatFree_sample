@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Information du passager</title>
+        <base href="{{@BASE. '/' . @UI}}"/>
+        <link href="css/style_jeton.css" rel="stylesheet">
+        <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css" >
+        <link rel="stylesheet" href="bootstrap/style.css">
+        <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.css">
+    </head>
+    <body>
+
+        <check if="{{@passager!=FALSE}}">
+            <true>
+                <div id="container" style="margin:.3%">
+                    <div>
+                        <img id="img_DGM" src="img/images (5).jpeg" alt="Image (7)" style="width:68%">
+                        <img id="qrcode" src="{{ @BASE . '/' . @jeton.nom_fichier }}" alt="Image Qrcode" style="width:30%">
+                    </div>
+                    <h1>IDENTITE DU PASSAGER</h1>
+                    <p style="margin:0%"><strong>Nom         :</strong> {{@passager.nom}}</p>
+                    <p style="margin:0%"><strong>Postnom     :</strong> {{@passager.postnom}}</p>
+                    <p style="margin:0%"><strong>Prenom      :</strong> {{@passager.prenom}}</p>
+                    <p style="margin:0%"><strong>Sexe        :</strong> {{@passager.genre}}</p>
+                    <p style="margin:0%"><strong>Age         :</strong> {{@passager.age}}</p>
+                    <p style="margin:0%"><strong>Nationalité :</strong> {{@passager.nationnalite}}</p>
+                    <p style="margin:0%"><strong>Adresse     :</strong> {{@passager.adresse}}</p>
+                    <p style="margin:0%"><strong>Date enregistrement :</strong>{{@passager.date_enr}}</p>
+                    <p style="margin:0%"><strong>Durée avant expiration : 24 heures</strong></p>
+                </div>
+                <a href="{{ @BASE . '/officier/conf_sortie' . @passager.passagerID }}" class="btn btn-primary"style="margin-left:1%">Confirmer sortie</a>
+            </true>
+            <false>
+                <header style="margin-bottom:100px;">
+                    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+                        <div class="container-fluid">
+                            <a class="navbar-brand" id="pad" href="{{ @BASE . '/officier/accueil' }}">
+                                <img src="img/images (5).jpeg" style="border-radius: 30px 30px 30px 30px;" alt="" width="400" height="60">
+                            </a>
+                        </div>
+                    </nav>
+                </header>
+                <link href="css/passager_error.css" rel="stylesheet">
+                <p id="not_found" style="margin:auto">
+                    <check if="{{ @auto=='N' }}">
+                        <true>Passager inconnu</true>
+                        <false>
+                            Passager non autorisé
+                        </false>
+                    </check>
+                </p>
+                <script type="text/javascript" src="js/passager_error.js"></script>
+            </false>
+        </check>
+        <a href="{{ @BASE . '/officier/accueil' }}" class="btn btn-primary" style="margin:1%">Retour</a>
+    </body>
+</html>

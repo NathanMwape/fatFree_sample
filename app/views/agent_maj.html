@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="{{@BASE. '/' . @UI}}"/>   
+    <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css" >
+      <link rel="stylesheet" href="bootstrap/style.css">
+    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.css">
+      <link rel="stylesheet" href="css/style.css">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <title>Modification d'un passager</title>
+    <script src="package/js/tinymce/tinymce.min.js"></script>
+</head>
+<body>
+    <div class="container-fluid">
+        <header>
+            <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+                <div class="container-fluid">
+                    <a class="navbar-brand" id="pad" href="{{ @BASE . '/agent/accueil' }}">
+                        <img src="img/images (5).jpeg" style="border-radius: 30px 30px 30px 30px;" alt="" width="400" height="60">
+                    </a>
+                </div>
+            </nav>
+        </header>
+        <div class="container" id="r">
+            <div>
+
+            </div>
+            
+            <h3 class="text-center">Poste frontalier de  Kasumbalesa</h3>
+            <div>
+                <h3 class="text-center" style="margin-bottom: 10px;">MODIFICATION D'UN PASSAGER</h3>
+                <form action="/agent/passager_maj_dbb/{{@passager.passagerID}}" method="POST" class="form-group">
+                    <div class="row jumbotron" id="jumbotro">
+                        <div class="col-md-6">
+                            <div>
+                                <label for="name">Nom</label>
+                                <input type="text" value="{{@passager.nom}}" name="nom" class="form-control" placeholder="Entre le nom">
+                            </div>
+                            <div class="">
+                                <label for="pop">Post-nom</label>
+                                <input type="text" value="{{@passager.postnom}}" name="postnom" class="form-control" placeholder="Entre le post-nom">
+                            </div>
+                            <div class="">
+                                <label for="name">Prenom</label>
+                                <input type="text" value="{{@passager.prenom}}" name="prenom" class="form-control" placeholder="Entre le Prenom">
+                            </div>
+                            <div class="">
+                                <label for="">Genre</label><br>
+                                <div class="form-check form-check-inline">
+                                    <check if="{{@passager.genre=='F'}}">
+                                        <true>
+                                            <input class="form-check-input" type="radio" name="genre" id="genre_f" value="F" checked>        
+                                        </true>
+                                        <false>
+                                            <input class="form-check-input" type="radio" name="genre" id="genre_f" value="F">    
+                                        </false>
+                                    </check>
+                                    
+                                    <label for="genre_f">F</label>
+                                  </div>
+                                  <div class="form-check form-check-inline">
+                                    <check if="{{@passager.genre=='M'}}">
+                                        <true>
+                                            <input class="form-check-input" type="radio" name="genre" id="genre_m" value="M" checked>        
+                                        </true>
+                                        <false>
+                                            <input class="form-check-input" type="radio" name="genre" id="genre_m" value="M">    
+                                        </false>
+                                    </check>
+                                    <label class="form-check-label" for="genre_m">M</label>
+                                  </div>
+                            </div>
+                            <div class="">
+                                <div class="">
+                                    <div class="">
+                                        <label for="age">Age</label>
+                                        <input type="text" value="{{@passager.age}}" name="age" id="age" class="form-control" placeholder="Age">
+                                    </div>     
+                                </div>
+                                <div class="">
+                                    <label for="Nationalite">Nationalité</label>
+                                    <input type="text" value="{{@passager.nationnalite}}" name="nationnalité" class="form-control" placeholder="Nationalite">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="">
+                                <label for="motif">Motif de sortie</label>
+                                <textarea cols="3" name="motif" class="form-control" placeholder="Motif" id="motif">{{@passager.motif}}</textarea>
+                            </div>
+                            <div class="">
+                                <label for="nom_agent">Nom de l'agent</label>
+                                <input style="background:rgba(53, 49, 49, 0.569);"  type="text" value="{{@passager.nom_agent}}" id="nom_agent" name="nom_agent" class="form-control" placeholder="Nom agent" readonly>
+                            </div>
+                            <div>
+                                  <label for="form-group">Numero du guichet </label>
+                                  <select name="nom_guichet" class="form-control" name="" id="guichet" placeholder="guichet">
+                                    <check if="{{@passager.nom_guichet=='Guichet 1'}}">
+                                        <true><option selected="selected" value="Guichet 1">guichet 1</option></true>
+                                        <false><option value="Guichet 1">guichet 1</option></false>
+                                    </check>
+    
+                                    <check if="{{@passager.nom_guichet=='Guichet 2'}}">
+                                        <true><option selected="selected" value="Guichet 2">guichet 2</option></true>
+                                        <false><option value="Guichet 2">guichet 2</option></false>
+                                    </check>
+    
+                                    <check if="{{@passager.nom_guichet=='Guichet 3'}}">
+                                        <true><option selected="selected" value="Guichet 3">guichet 3</option></true>
+                                        <false><option value="Guichet 3">guichet 3</option></false>
+                                    </check>
+                                  </select>
+                            </div>
+                            <label for="adr">Adresse</label>
+                            <input value="{{@passager.adresse}}" name="adresse" id="adr" class="form-control" placeholder="Adresse Passager">
+                            
+                            <div class="">
+                                <label for="">Autorisation de sortie</label><br>
+                                <div class="form-check form-check-inline">
+                                    <check if="{{@passager.sortie=='Oui'}}">
+                                        <true>
+                                            <input class="form-check-input" type="radio" name="sortie" id="sortie_non" value="Non" checked>        
+                                        </true>
+                                        <false>
+                                            <input class="form-check-input" type="radio" name="sortie" id="sortie_non" value="Non">    
+                                        </false>
+                                    </check>
+                                    
+                                    <label for="sortie_non">Non</label>
+                                  </div>
+                                  <div class="form-check form-check-inline">
+                                    <check if="{{@passager.sortie=='Oui'}}">
+                                        <true>
+                                            <input class="form-check-input" type="radio" name="sortie" id="sortie_oui" value="Oui" checked>        
+                                        </true>
+                                        <false>
+                                            <input class="form-check-input" type="radio" name="sortie" id="sortie_oui" value="Oui">    
+                                        </false>
+                                    </check>
+                                    <label class="form-check-label" for="sortie_oui">Oui</label>
+                                  </div>
+                            </div>
+                    
+                            <div class="col-sm-12" style=" margin-top: 20px;">
+                                <input type="submit" style="margin-left:140px" value="Modifier" class="btn btn-primary">
+                                <a style="margin-left:10px" class="btn btn-primary" href="{{ @BASE . '/agent/accueil' }}">Annuler</a>
+                            </div>
+                        
+                        </div>
+                    </div>
+                </form>
+            </div>
+       
+            
+        </div>
+
+
+        
+    </div>
+
+    <footer class="bg-dark text-center text-white">
+        <!-- Section: Text -->
+        <section class="mb-4">
+            <p>
+                Direction generale de la migration  
+            </p>
+        </section>
+        <section class="">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>
+                        Copyright &copy;<script>
+                            document.write(new Date().getFullYear());
+                        </script><a href="javascript:;"> DGM</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </footer>  
+
+
+    <script > tinymce.init({ selector:'#pclu-textarea', branding: false});</script>
+    <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+
+</body>
+</html>

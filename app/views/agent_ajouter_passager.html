@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="{{@BASE. '/' . @UI}}"/>   
+    <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css" >
+    <link rel="stylesheet" href="bootstrap/style.css">
+    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Ajouter passager</title>
+    <script src="package/js/tinymce/tinymce.min.js"></script>
+</head>
+<body style="width:100%;margin :0px;" >
+    <div style="margin-bottom: 20px;" class="container-fluid">
+        <header>
+            <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+                <div class="container-fluid">
+                    <a class="navbar-brand" id="pad" href="{{ @BASE . '/agent/accueil' }}">
+                        <img src="img/images (5).jpeg" style="border-radius: 30px 30px 30px 30px;" alt="" width="400" height="60">
+                    </a>
+                </div>
+            </nav>
+        </header>
+        <div class="container" id="r">
+            <div>
+            </div>
+            <h3 class="text-center">Poste frontalier de  Kasumbalesa</h3>
+            <div>
+                <h3 class="text-center" style="margin-bottom: 10px;">ENREGISTREMENT DES PASSAGERS</h3>
+                <form action="/agent/passager_add_dbb" method="POST" onsubmit="return check();">
+                    <div class="row" id="jumbotro">
+                        <div class="col-md-6">
+                            <div>
+                                <label for="name">Nom</label>
+                                <input type="text" name="nom" class="form-control" placeholder="Entrez le nom" id="nom">
+                            </div>
+                            <div class="">
+                                <label for="pop">Post-nom</label>
+                                <input type="text" name="postnom" class="form-control" placeholder="Entrez le post-nom" id="postnom">
+                            </div>
+                            <div class="">
+                                <label for="name">Prenom</label>
+                                <input type="text" name="prenom" class="form-control" placeholder="Entrez le Prenom" id="prenom">
+                            </div>
+                            <div class="">
+                                <label for="">Genre</label><br>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="genre" id="genre_f" value="F">
+                                    <label for="genre_f">F</label>
+                                  </div>
+                                  <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="genre" id="genre_m" value="M">
+                                    <label class="form-check-label" for="genre_m">M</label>
+                                  </div>
+                            </div>
+                            <div class="">
+                                <div class="">
+                                    <div class="">
+                                        <label for="age">Age</label>
+                                        <input type="text" name="age" class="form-control" placeholder="Age"  id="age">
+                                    </div>
+                                    <div class="">
+                                        <label for="Nationalite">Nationalité</label>
+                                        <input type="text" name="nationnalite" class="form-control" placeholder="Nationalité" id="nat">
+                                    </div> 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="">
+                                <label for="motif">Motif de sortie</label>
+                                <textarea cols="3" name="motif" class="form-control" placeholder="Motif" id="motif"></textarea>
+                            </div>
+                            <div class="">
+                                <label for="nom_agent">Nom de l'agent</label>
+                                <input style="background:rgba(53, 49, 49, 0.569);" type="text" id="nom_agent" name="nom_agent" class="form-control" placeholder="Nom de l'agent" value="{{ @nom_agent }}" readonly>
+                            </div>
+                     
+                            <div>
+                                <label>Numero du guichet </label>
+                                <select class="form-control" name="nom_guichet" id="guichet">
+                                    <option  value="Guichet 1" selected>guichet 1</option>
+                                    <option value="Guichet 2">guichet 2</option>
+                                    <option  value="Guichet 3">guichet 3</option>
+                                </select>
+                            </div>
+                            
+                            <label for="adr">Adresse</label>
+                            <input name="adresse" class="form-control" placeholder="Adresse Passager" id="adr" >
+                            <div class="">
+                                <label for="">Autorisation de sortie</label><br>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="sortie" id="sortie_non" value="Non">
+                                    <label for="sortie_non">Non</label>
+                                  </div>
+                                  <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="sortie" id="sortie_oui" value="Oui">
+                                    <label class="form-check-label" for="sortie_oui">Oui</label>
+                                  </div>
+                            </div>
+                            <div class="col-sm-12" style=" margin-top: 20px;">
+                                <button type="submit" style="margin-left:60px;padding-left:30px;padding-right:40px;" class="btn btn-primary">Ajouter</button>
+                                <a style="margin-right:50px;padding-left:30px;padding-right:40px;" class="btn btn-primary" href="{{ @BASE . '/agent/accueil' }}">Annuler</a>
+                                    <!--<button class="btn btn-primary"  href="Rapport.html">Rediger rapport</a>-->
+                            </div>
+                        
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer  style="position:sticky;top:100px;"  class="bg-dark text-center text-white">
+        <section class="mb-4">
+            <p>
+                Direction generale de la migration  
+            </p>
+        </section>
+        <section class="">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>
+                        Copyright &copy;<script>
+                            document.write(new Date().getFullYear());
+                        </script><a href="javascript:;"> DGM</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </footer>  
+
+    <script > tinymce.init({ selector:'#pclu-textarea', branding: false});</script>
+    <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="js/check_agent_ajouter.js"></script>
+</body>
+</html>

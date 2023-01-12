@@ -1,0 +1,14 @@
+
+#not_found {
+     margin       : 200px;
+     text-align   : center;
+     font-size    : 40px;
+     padding      : 30px;
+     border-style : solid;
+     border-radius: 10px;
+     border-width : 2px;
+     color        : red;
+     border-color : red;
+     margin-left  : 100px;
+     margin-right : 100px;
+ }

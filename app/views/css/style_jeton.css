@@ -1,0 +1,27 @@
+* {
+    font-family: Courier, 'Courier New', monospace;
+}
+
+#qrcode {
+    height        : 250px;
+    margin-bottom : 30px;
+    margin-left   : 5px;
+}
+
+#img_DGM {
+    height : 300px;
+    width  : 50%;
+}
+
+#container {
+    border-style  : solid;
+    border-width  : 2px;
+    border-color  : black;
+    border-radius : 6px;
+    padding       : 10px;
+    width         : 70%;
+}
+
+p {
+    margin : 8px;
+}

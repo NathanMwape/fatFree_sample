@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <base href="{{@BASE. '/' . @UI}}"/>   
+        <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css" >
+        <link rel="stylesheet" href="bootstrap/style.css">
+        <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="css/style.css">
+        <title>Liste des rapports</title>
+        <script src="package/js/tinymce/tinymce.min.js"></script>
+    </head>
+    <body  style="width:99%;margin :40px;">
+    
+        <div style="margin-bottom: 20px;" class="container-fluid">
+            <header style="margin-bottom: 60px;">
+                <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" id="pad" href="{{ @BASE . '/admin/accueil' }}">
+                            <img src="img/images (5).jpeg" style="border-radius: 30px 30px 30px 30px;" alt="" width="400" height="60">
+                        </a>
+                    </div>
+                </nav>
+            </header>
+            <h2>Rapports</h2>
+            <div class="list-group">
+                <repeat group="{{ @rapports }}" value="{{@rapport}}">
+                <a style="margin:2px;width: 90%;" href="{{ @BASE . 'admin/afficher_rapports' }}" class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between">
+                        <div class="mb-1">
+                            <h4>De {{@rapport.nom}} {{@rapport.prenom}}</h4>
+                            <h5>Contenu :</h5>
+                        </div>
+                    </div>
+                    <p class="mb-1">{{ @rapport.contenu }}</p>
+
+                </a>
+                </repeat>
+            </div>
+
+        </div>
+
+    <a style="margin-left: 15px;" class="btn btn-primary" href="{{ @BASE . '/admin/accueil' }}">Retour</a>
+
+    <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <base href="{{@BASE. '/' . @UI}}"/>  
+        <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css" >
+        <link rel="stylesheet" href="bootstrap/style.css">
+        <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" id="pad" href="{{ @BASE . '/officier/accueil' }}">
+                            <img src="img/images (5).jpeg" style="border-radius: 30px 30px 30px 30px;margin-left: 77%;" alt="" width="400" height="60">
+                        </a>
+                    </div>
+                </nav>
+            </header>
+            <div class="row">
+                <div class="col-md-3">
+                </div>
+                <div class="col-md-5" style="margin-left:40px;">
+                    <h2>Mettez le qrcode devant la caméra</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                </div>
+                <div class="col-md-6">
+                    <video id="preview" width="100%" style="border-style:double; border-width:6px;border-color:black;"></video>
+                </div>
+            </div>
+        </div>
+
+        <footer  style="position:absolute;bottom: 0;left:0;right: 0;"  class="bg-dark text-center text-white">
+            <section class="mb-4">
+                <p>
+                    Direction generale de la migration  
+                </p>
+            </section>
+            <section class="">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <p>
+                            Copyright &copy;<script>
+                                document.write(new Date().getFullYear());
+                            </script><a href="javascript:;"> DGM</a>
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </footer>  
+
+        <script type="text/javascript" src="js/instascan.min.js"></script>
+        <script type="text/javascript" src="js/adapter.js"></script>
+        <script type="text/javascript" src="js/vue.js"></script>
+        <script type="text/javascript" src="js/scan.js"></script>
+    </body>
+</html>
